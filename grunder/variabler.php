@@ -13,6 +13,11 @@
     $efternamn = "Swagson";
 
     // echo $förnamn . " " . $efternamn;
+    echo "Mitt namn är $förnamn $efternamn <br>";
+    echo "Dagens datum är " . date("l d F Y") . "<br>";
+
+    setlocale(LC_ALL, "sv_SE.utf8");
+    echo "Dagens datum är " . strftime("%A %e %B %Y");
     ?>  
 </body>
 </html>
