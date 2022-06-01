@@ -16,28 +16,28 @@ $dataJson = json_decode($json);
 $timeSeries = $dataJson->timeSeries;
 
 // För json-svaret
-$tempData = [];
+$dataKlockslag = [];
+$dataTemperaturer = [];
 
 // Loopa igenom timeSeries
 foreach ($timeSeries as $timeStamp) {
     // Lägg till klockslaget
-    $data->label = $timeStamp->validTime;
+    $dataKlockslag[] = $timeStamp->validTime;
 
     // Plocka ut alla parametrerar
     $parameters = $timeStamp->parameters;
     
-    // Skapa ett tomt objekt
-    $data = new stdClass();
-
     // Söka efter name="t"
     foreach ($parameters as $parameter) {
         if ($parameter->name == "t") {
             // Lägg till temperaturen
-            $data->t = $parameter->values[0];
-            $tempData[] = $data;
+            $dataTemperaturer[] = $parameter->values[0];
         }
     }
 }
 
 // Skriv ut svaret
-echo json_encode($tempData);
+$data = (object)[];
+$data->label = $dataKlockslag;
+$data->t = $dataTemperaturer;
+echo json_encode($data);

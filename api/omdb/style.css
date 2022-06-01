@@ -1,0 +1,18 @@
+body {
+    background: antiquewhite;
+}
+.kontainer {
+    width: 70%;
+    margin: auto;
+    padding: 2em;
+    background: #FFF;
+}
+main {
+    padding: 2em;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
+    justify-items: center;
+}
